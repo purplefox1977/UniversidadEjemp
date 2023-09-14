@@ -128,15 +128,35 @@ public class AlumnoData {
     
     public List<Alumno> listarAlummnos(){
       List<Alumno> alumnos =new ArrayList<>();
-      
-      
-        return alumnos;
-      
+        
+    try {
+        String sql = "SELECT * FROM alumno WHERE estado = 1 ";  
+        PreparedStatement ps = con.prepareStatement(sql);  
+        ResultSet rs = ps.executeQuery();
+        
+        while (rs.next()) {
+            
+            Alumno alumno = new Alumno();
+            alumno.setIdAlumno(rs.getInt("idAlumno"));
+            alumno.setDni(rs.getInt("dni"));
+            alumno.setApellido(rs.getString("apellido"));
+            alumno.setNombre(rs.getString("nombre"));
+            alumno.setFechaNac(rs.getDate("fechaNacimiento").toLocalDate());
+            alumno.setAcctivo(rs.getBoolean("estado"));
+            alumnos.add(alumno);
+        }
+        ps.close();
+
+    } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error al acceder a la tabla Alumno "+ex.getMessage());
+        }
+        return alumnos;  
     }
     public void eliminarAlumno(int id){
-        String sql =" UPDATE alumno SET estado = 0 WHERE idAlumno = ? ";
-        PreparedStatement ps = null;
+        
         try {
+            String sql =" UPDATE alumno SET estado = 0 WHERE idAlumno = ? ";
+            PreparedStatement ps = null;
             ps =con.prepareStatement(sql);
             ps.setInt(1, id);
             int fila = ps.executeUpdate();
@@ -149,4 +169,5 @@ public class AlumnoData {
              JOptionPane.showMessageDialog(null,"Error al eliminar alumno");
         }      
     }  
+
 }

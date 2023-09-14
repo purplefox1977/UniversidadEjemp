@@ -156,7 +156,7 @@ public class UniversidadEjemplo {
 //****************************************************
         //Ver listado alumnos 
 //        AlumnoData alu =new AlumnoData();
-//        for (Alumno alumno : alu.listarAlumno()) {
+//        for (Alumno alumno : alu.listarAlummnos()) {
 //            System.out.println(alumno.toString());
 //        }
     
