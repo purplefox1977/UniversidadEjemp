@@ -152,6 +152,7 @@ public class AlumnoData {
         }
         return alumnos;  
     }
+    
     public void eliminarAlumno(int id){
         
         try {

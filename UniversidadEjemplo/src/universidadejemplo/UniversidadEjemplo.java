@@ -179,10 +179,10 @@ public class UniversidadEjemplo {
 
 //****************************************************
         //Ver listado de Materias
-//        MateriaData mate =new MateriaData();
-//        for (Materia materia : mate.) {
-//            System.out.println(materia.toString());
-//        }
+        MateriaData mate =new MateriaData();
+        for (Materia materia : mate.listarMateria()) {
+            System.out.println(materia.toString());
+        }
     
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     }
