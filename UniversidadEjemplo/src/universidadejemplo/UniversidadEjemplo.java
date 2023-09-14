@@ -23,7 +23,7 @@ public class UniversidadEjemplo {
     public static void main(String[] args) {
         
         // pruebo la coneccion
-          Connection con = Conexion.getConexion();     
+         // Connection con = Conexion.getConexion();     
         
 //        // Caga de alumnos
 //        Alumno nuevoAlu = new Alumno(28565768,"Moreno","Mariano",LocalDate.of(1978, Month.MARCH, 24),true);
@@ -164,11 +164,18 @@ public class UniversidadEjemplo {
 
         //Cargar materia
         
-        Materia mate= new Materia(" Logica ",2,true);
-        MateriaData mat=new MateriaData();
-        mat.guardarMateria(mate);
+//        Materia mate= new Materia(" Logica ",2,true);
+//        MateriaData mat=new MateriaData();
+//        mat.guardarMateria(mate);
         
+//        //Modificar Materia
+//        Materia mate= new Materia(17," Proyecto Final ",2,true);
+//        MateriaData mat=new MateriaData();
+//        mat.modificarMateria(mate);
 
+        //Eliminar Materia 
+//        MateriaData mat=new MateriaData();
+//        mat.eliminarMateria(17);
     }
     
 }

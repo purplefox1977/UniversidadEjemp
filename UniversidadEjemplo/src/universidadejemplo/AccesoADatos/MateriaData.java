@@ -81,15 +81,15 @@ public class MateriaData {
   }
     
     public void modificarMateria(Materia materia){
-        try {
-            String sql ="UPDATE materia SET nombre = ?,anio = ?,estado = ? WHERE idMateria = ?";
-            PreparedStatement ps =null;
-            
+        
+        String sql ="UPDATE materia SET nombre = ?,anio = ? WHERE idMateria = ? AND estado = 1";
+        PreparedStatement ps =null;
+        try {    
             ps= con.prepareStatement(sql);
             ps.setString(1, materia.getNombre());
             ps.setInt(2, materia.getAnio());
-            ps.setBoolean(3, true);
-            
+            ps.setInt(3, materia.getIdMatreia());
+               
             int exito =ps.executeUpdate();
             
             if( exito == 1){
@@ -99,8 +99,7 @@ public class MateriaData {
             }
         } catch (SQLException ex) {
              JOptionPane.showMessageDialog(null," Error al acceder a la tabla materia "+ex.getMessage());
-        }
-        
+        }  
     }
     
     public void eliminarMateria(int id){

@@ -105,8 +105,31 @@ public class AlumnoData {
       return alumno;
   }
     
+    public void modificarAlumno(Alumno alumno){
+        
+        String sql= "UPDATE alumno SET dni=?, apellido=?,nombre=? ,fechaNacimiento=? WHERE idAlumno =?  AND estado=1 ";
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, alumno.getDni());
+            ps.setString(2, alumno.getApellido());
+            ps.setString(3, alumno.getNombre());
+            ps.setDate(4, Date.valueOf(alumno.getFechaNac()));
+            ps.setInt(5, alumno.getIdAlumno());
+            int respuesta = ps.executeUpdate();
+            if(respuesta==1){
+                JOptionPane.showMessageDialog(null, "Alumno modificado");
+            }
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "error no se pudo modificar el alumno");
+        }
+        
+    }
+    
     public List<Alumno> listarAlummnos(){
       List<Alumno> alumnos =new ArrayList<>();
+      
+      
         return alumnos;
       
     }
