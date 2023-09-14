@@ -176,6 +176,15 @@ public class UniversidadEjemplo {
         //Eliminar Materia 
 //        MateriaData mat=new MateriaData();
 //        mat.eliminarMateria(17);
+
+//****************************************************
+        //Ver listado de Materias
+//        MateriaData mate =new MateriaData();
+//        for (Materia materia : mate.) {
+//            System.out.println(materia.toString());
+//        }
+    
+//$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     }
     
 }
