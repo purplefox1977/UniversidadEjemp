@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package universidadejemplo;
 
 import java.sql.Connection;
@@ -179,11 +175,11 @@ public class UniversidadEjemplo {
 
 //****************************************************
         //Ver listado de Materias
-        MateriaData mate =new MateriaData();
-        for (Materia materia : mate.listarMateria()) {
-            System.out.println(materia.toString());
-        }
-    
+//        MateriaData mate =new MateriaData();
+//        for (Materia materia : mate.listarMateria()) {
+//            System.out.println(materia.toString());
+//        }
+//    
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     }
     
