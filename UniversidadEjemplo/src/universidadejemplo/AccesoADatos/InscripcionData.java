@@ -45,9 +45,32 @@ public class InscripcionData {
         }
 
   }
+  
   public List<Inscripcion> obtenerIscripciones(){
-      
-        return null;
+       String sql="SELECT inscripcion.idMateria, inscripcion.idAlumno,alumno.nombre, alumno.apellido, "
+              + "inscripcion.nota FROM inscripcion JOIN alumno "
+              + "WHERE inscripcion.idAlumno=alumno.idAlumno AND alumno.estado=1";
+   
+      ArrayList<Inscripcion>inscripciones=new ArrayList();
+      try {
+          PreparedStatement ps=con.prepareStatement(sql);
+          ResultSet rs = ps.executeQuery();
+          while (rs.next()) {              
+              Inscripcion insc=new Inscripcion();
+              insc.setIdInscripcion(rs.getInt("idInscripcion"));
+              insc.getMateria().setIdMateria(rs.getInt("idMateria"));
+              
+              insc.getAlumno().setIdAlumno(rs.getInt("idAlumno"));
+              insc.getAlumno().setNombre(rs.getString("nombre"));
+              insc.getAlumno().setApellido(rs.getString("nombre"));
+              insc.setNota(rs.getInt("nota"));
+              inscripciones.add(insc);
+          }
+          ps.close();
+      } catch (SQLException ex) {
+          JOptionPane.showMessageDialog(null, "Error en Inscripciones");
+      }
+        return inscripciones;
       
   } 
   public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){

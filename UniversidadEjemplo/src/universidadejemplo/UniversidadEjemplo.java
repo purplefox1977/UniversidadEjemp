@@ -181,6 +181,18 @@ public class UniversidadEjemplo {
 //        }
 //    
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+    
+       Alumno juan = new Alumno(1,38439123,"flores"," cristina ",LocalDate.of(2021, Month.MARCH, 3),true);
+     Materia lengua = new Materia(1,"base de datos",1,true);
+     
+     InscripcionData insData= new InscripcionData();
+//     Inscripcion insc =new Inscripcion(juan, lengua, 7);
+//     insData.guardarInscripcion(insc);
+
+        for (Inscripcion inscripcion : insData.obtenerInscripciones()) {
+            System.out.println(inscripcion.toString());
+        
+    
     }
     
 }
