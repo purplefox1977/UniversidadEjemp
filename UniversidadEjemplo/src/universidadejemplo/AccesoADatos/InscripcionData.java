@@ -18,27 +18,49 @@ import universidadejemplo.Entidades.Materia;
 
 public class InscripcionData {
     private Connection con = null;
+    private AlumnoData aluData;
+    private MateriaData mateDate;
     
-    public InscripcionData(){
+  public InscripcionData(){
       
       con = Conexion.getConexion();
     }
-  public List<Inscripcion> optenerIscripciones(){
+  
+  public void guardarInscripcion(Inscripcion insc){
+      String sql = "INSERT INTO inscripciones (nota,idMateria,idAlumno)VALUES(?,?,?) ";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            ps.setDouble(1, insc.getNota());
+            ps.setInt(2, insc.getAlumno().getIdAlumno());
+            ps.setInt(3, insc.getMateria().getIdMateria());
+            ps.executeUpdate();
+            ResultSet rs= ps.getGeneratedKeys();
+                if (rs.next()){  
+                    insc.setIdInscripcion(rs.getInt(1));
+                    JOptionPane.showMessageDialog(null,"Inscripcion realizada");
+                }
+                ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, " Error en la inscripcion");
+        }
+
+  }
+  public List<Inscripcion> obtenerIscripciones(){
       
         return null;
       
   } 
-  public List<Inscripcion> optenerInscripcionesPorAlumno(int id){
+  public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
       
         return null;
       
   }
-  public List<Materia> optenerMateriasCursadas(int id){
+  public List<Materia> obtenerMateriasCursadas(int id){
       
         return null;
       
   }
-  public List<Materia> optenerMateriaNoCursada(int id){
+  public List<Materia> obtenerMateriaNoCursada(int id){
       
         return null;
       
