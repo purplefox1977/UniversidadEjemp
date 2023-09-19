@@ -7,8 +7,10 @@ import java.time.LocalDate;
 import java.time.Month;
 import javax.swing.JOptionPane;
 import universidadejemplo.AccesoADatos.AlumnoData;
+import universidadejemplo.AccesoADatos.InscripcionData;
 import universidadejemplo.AccesoADatos.MateriaData;
 import universidadejemplo.Entidades.Alumno;
+import universidadejemplo.Entidades.Inscripcion;
 import universidadejemplo.Entidades.Materia;
 
 public class UniversidadEjemplo {
@@ -182,17 +184,39 @@ public class UniversidadEjemplo {
 //    
 //$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
     
-       Alumno juan = new Alumno(1,38439123,"flores"," cristina ",LocalDate.of(2021, Month.MARCH, 3),true);
-     Materia lengua = new Materia(1,"base de datos",1,true);
-     
-     InscripcionData insData= new InscripcionData();
+// inscripcion guardar iscripcion 
+
+//     Alumno juan = new Alumno(1,38439123,"flores"," cristina ",LocalDate.of(2021, Month.MARCH, 3),true);
+//     Materia lengua = new Materia(1,"base de datos",1,true);
+//    
+//     InscripcionData insData= new InscripcionData();
 //     Inscripcion insc =new Inscripcion(juan, lengua, 7);
 //     insData.guardarInscripcion(insc);
+//*******************************************************************
 
-        for (Inscripcion inscripcion : insData.obtenerInscripciones()) {
-            System.out.println(inscripcion.toString());
+
+//        for (Inscripcion inscripcion : insData.obtenerInscripcionesPorAlumno(0)) {
+//            System.out.println(inscripcion.toString());
+//        
+//    
+//    }
         
+        
+     
     
+          Alumno juan = new Alumno(14,38439123,"flores"," cristina ",LocalDate.of(2021, Month.MARCH, 3),true);
+     Materia lengua = new Materia(5,"base de datos",1,true);
+     InscripcionData insData= new InscripcionData();
+    Inscripcion insc =new Inscripcion(juan, lengua, 7);
+     insData.guardarInscripcion(insc);
+
+        for (Inscripcion inscripcion : insData.obtenerIscripciones()) {
+            System.out.print("idInscripcion: "+inscripcion.getIdInscripcion());
+            System.out.print(" Nota: "+inscripcion.getNota());
+            System.out.print(" idAlumno: "+inscripcion.getAlumno().getIdAlumno());
+            System.out.print(" idMateria: "+inscripcion.getMateria().getIdMateria());
+            System.out.println("");
+        }
     }
-    
-}
+}  
+

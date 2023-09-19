@@ -19,17 +19,21 @@ import universidadejemplo.Entidades.Materia;
 public class InscripcionData {
     private Connection con = null;
     private AlumnoData aluData;
-    private MateriaData mateDate;
+    private MateriaData mateData;
     
   public InscripcionData(){
       
       con = Conexion.getConexion();
+//      aluData al = new AlumnoData() ;
+//      mateData mat= new MateriaData();
+      
     }
   
   public void guardarInscripcion(Inscripcion insc){
-      String sql = "INSERT INTO inscripciones (nota,idMateria,idAlumno)VALUES(?,?,?) ";
+      String sql = "INSERT INTO inscripcion (nota,idAlumno,idMateria)VALUES(?,?,?) ";
         try {
-            PreparedStatement ps= con.prepareStatement(sql);
+            PreparedStatement ps= con.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+            
             ps.setDouble(1, insc.getNota());
             ps.setInt(2, insc.getAlumno().getIdAlumno());
             ps.setInt(3, insc.getMateria().getIdMateria());
@@ -43,14 +47,11 @@ public class InscripcionData {
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, " Error en la inscripcion");
         }
-
   }
-  
+
   public List<Inscripcion> obtenerIscripciones(){
-       String sql="SELECT inscripcion.idMateria, inscripcion.idAlumno,alumno.nombre, alumno.apellido, "
-              + "inscripcion.nota FROM inscripcion JOIN alumno "
-              + "WHERE inscripcion.idAlumno=alumno.idAlumno AND alumno.estado=1";
-   
+
+      String sql = "SELECT * FROM inscripcion ";
       ArrayList<Inscripcion>inscripciones=new ArrayList();
       try {
           PreparedStatement ps=con.prepareStatement(sql);
@@ -58,21 +59,24 @@ public class InscripcionData {
           while (rs.next()) {              
               Inscripcion insc=new Inscripcion();
               insc.setIdInscripcion(rs.getInt("idInscripcion"));
-              insc.getMateria().setIdMateria(rs.getInt("idMateria"));
-              
-              insc.getAlumno().setIdAlumno(rs.getInt("idAlumno"));
-              insc.getAlumno().setNombre(rs.getString("nombre"));
-              insc.getAlumno().setApellido(rs.getString("nombre"));
               insc.setNota(rs.getInt("nota"));
-              inscripciones.add(insc);
+              insc.getMateria().setIdMateria("idMateria");
+              Alumno alu=aluData.buscarAlumno(rs.getInt("idAlumno"));
+              Materia mate= mateData.buscarMateria(rs.getInt("idMateria"));
+              insc.setAlumno(alu);
+              insc.setMateria(mate);
+          inscripciones.add(insc);
           }
           ps.close();
       } catch (SQLException ex) {
           JOptionPane.showMessageDialog(null, "Error en Inscripciones");
       }
-        return inscripciones;
-      
+        return inscripciones;  
   } 
+ 
+
+
+
   public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
       
         return null;
